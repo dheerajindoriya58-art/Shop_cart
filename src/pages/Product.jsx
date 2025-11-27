@@ -51,7 +51,7 @@ function Product() {
             <h1 className="common-heading Featured">Our Feature Products</h1>
 
             <div className="container">
-                <div className=" grid grid-five-cols">
+                <div className=" grid grid-four-cols product-card">
                     {products.map((p) => (
                         <CartList key={p.id} products={p} />
                     ))}

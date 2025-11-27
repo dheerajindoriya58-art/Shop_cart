@@ -7,14 +7,16 @@ function CartList({ products }) {
 
     return (
         <div className="card">
-            <div>
-                <img src={products.img} alt={products.name} />
-                <h3>{products.name}</h3>
-                <span>Price: ₹{products.price}</span>
-            </div>
-
             <NavLink to={`/product/${products.id}`}>
-                <button className="add-btn" onClick={() => AddToCart(products)}>View Details</button>
+                <div>
+                    <img src={products.img} alt={products.name} />
+                    <h3>{products.name}</h3>
+                    <span>Price: ₹{products.price}</span>
+
+                    <NavLink to="/">
+                        <button className="add-btn" onClick={() => AddToCart(products)}>Add</button>
+                    </NavLink>
+                </div>
             </NavLink>
         </div>
     );
