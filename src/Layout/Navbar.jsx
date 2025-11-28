@@ -4,7 +4,7 @@ import { useCart } from '../context/ContextProvider';
 import { RiMenu3Line } from 'react-icons/ri';
 
 function Navbar() {
-    const { cart } = useCart();
+    const { totalQty } = useCart();
 
     const [navbar, setNavbar] = useState(false);
 
@@ -29,7 +29,7 @@ function Navbar() {
                         <nav className={navbar ? "mobile" : "web"}>
                             <ul>
                                 <li className="active"><NavLink to="/">Home</NavLink></li>
-                                <li><NavLink to="/Product">Product</NavLink></li>
+                                <li><NavLink to="/Products">Products</NavLink></li>
                                 <li><NavLink to="/Contact">Contact</NavLink></li>
 
                                 {/* ✅ Login Button */}
@@ -40,11 +40,11 @@ function Navbar() {
                                 </div>
 
                                 <NavLink to="/cart" >
-                                    <span>Cart ({cart.length})</span>
+                                    <span>Cart ({totalQty})</span>
                                 </NavLink>
                             </ul>
                         </nav>
-                        
+
                         <div className="menu-icon">
                             <button className="menu" onClick={handleMenuBtn}>
                                 <RiMenu3Line />

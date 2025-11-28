@@ -1,49 +1,31 @@
-import React from 'react';
-import { useCart } from '../context/ContextProvider';
+import { useCart } from "../context/CartContext";
 
-function Shop() {
-  const { cart, removeItem, updateItem, totalPrice } = useCart();
+export default function Shop() {
+  const { cart, addToCart, removeOne, deleteItem } = useCart();
 
   return (
-    <div className="shop_container">
-      <h3 >Your Cart</h3>
+    <div>
+      <h1>Your Cart</h1>
 
-      {cart.length === 0 ? (
-        <p>No items in cart</p>
-      ) : (
-        <>
-          <div className="cart_grid">
-            {cart.map((p) => (
-              <div className="cart_card" key={p.id}>
-                <div className="cart_row">
-                <img src={p.img} alt={p.name} />
+      {cart.length === 0 && <p>No items in cart.</p>}
 
-                  <div className="col col-1">{p.name}</div>
-                  <div className="col col-2">₹{p.price}</div>
-                  <div className="col col-3">{p.price} × {p.qty}</div>
+      {cart.map((item) => (
+        <div key={item.id}>
+          <h3>{item.title}</h3>
+          <img src={item.image} width="80" />
 
-                  <div className="col col-4">
-                    <input
-                      type="number"
-                      min="1"
-                      value={p.qty}
-                      onChange={(e) => updateItem(p.id, Number(e.target.value))}
-                    />
-                  </div>
+          <p>Price: ₹ {item.price * item.qty}</p>
 
-                  <div className="col col-5">
-                    <button onClick={() => removeItem(p.id)} className='remove'>Remove</button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <button onClick={() => removeOne(item.id)}>-</button>
+          <span style={{ margin: "0 10px" }}>{item.qty}</span>
+          <button onClick={() => addToCart(item)}>+</button>
 
-          <h2 className="total">Total Price: ₹{totalPrice}</h2>
-        </>
-      )}
+          <br />
+          <button onClick={() => deleteItem(item.id)}>Delete</button>
+
+          <hr />
+        </div>
+      ))}
     </div>
   );
 }
-
-export default Shop;

@@ -1,48 +1,29 @@
-
-
-import React from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useCart } from "../context/ContextProvider";
+import { useCart } from "../context/CartContext";
 
-export default function Detail() {
-    const { id } = useParams();
-    const { cart, AddToCart } = useCart();
+export default function ProductDetail() {
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const { addToCart } = useCart();
 
-    const product = cart.find((p) => p.id === Number(id));
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products/${id}`)
+      .then((res) => res.json())
+      .then((data) => setProduct(data));
+  }, [id]);
 
-    const handleAdd = () => {
-        AddToCart(product);
-    };
+  if (!product) return <p>Loading...</p>;
 
-    if (!product) return <h2>Product not found!</h2>;
+  return (
+    <div>
+      <h1>{product.title}</h1>
 
-    return (
-        <div className="card-details">
-            <div className="grid grid-two-cols section details">
-                
-                <div className="full-img">
-                    <img src={product.img} alt={product.name} />
-                </div>
+      <img src={product.image} width="200" />
+      <h3>₹ {product.price}</h3>
+      <p>{product.description}</p>
 
-                <div className="detail-txt">
-                    <div className='comy'>
-                        <h2>{product.name}</h2>
-                    </div>
-
-                    <div className="cart-details">
-                        <div>
-                            <span className='price'>₹{product.price}</span>
-                            <p>Quantity: {cart.find((i) => i.id === product.id)?.qty || 0}</p>
-                            <p className='des'>{product.description}</p>
-                        </div>
-
-                        <button className="back-btn" onClick={handleAdd}>
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+      <button onClick={() => addToCart(product)}>Add to Cart</button>
+    </div>
+  );
 }
-
