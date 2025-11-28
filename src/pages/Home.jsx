@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../Layout/Navbar'
-import Product from './Product';
+import Product from './Products';
 import Services from './Services';
 import Footer from '../Layout/Footer';
 import Contact from './Contact';
@@ -10,13 +10,13 @@ import Trusted from './Trusted';
 function Home() {
   return (
     <div>
-      <Navbar />
-      <About />
-      <Product />
-      <Services />
+      <Navbar/>
+      <About/>
+      <Product/>
+      <Services/>
       <Trusted/>
-      <Contact />
-      <Footer />
+      <Contact/>
+      <Footer/>
     </div>
   )
 }
