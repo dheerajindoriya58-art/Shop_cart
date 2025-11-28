@@ -12,12 +12,12 @@ import { CartProvider } from "./context/CartContext";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />,
+    element: <AppLayout/>,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/products", element: <Products /> },
-      { path: "/product/:id", element: <ProductDetail /> },
-      { path: "/cart", element: <CartPage /> },
+      { path: "/", element: <Home/> },
+      { path: "/products", element: <Products/> },
+      { path: "/product/:id", element: <ProductDetail/> },
+      { path: "/shop", element: <Shop/> },
     ],
   },
 ]);
