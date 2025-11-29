@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 export default function ProductDetail() {
@@ -17,13 +17,15 @@ export default function ProductDetail() {
   if (!product) return <h2>Loading...</h2>;
 
   return (
-    <div>
+    <div className="card-detail">
       <img src={product.image} width="200" />
       <h1>{product.title}</h1>
       <p>${product.price}</p>
       <p>{product.description}</p>
 
-      <button onClick={() => add(product)}>Add to Cart</button>
+      <NavLink to="/">
+        <button onClick={() => add(product)}>Back</button>
+      </NavLink>
     </div>
   );
 }
