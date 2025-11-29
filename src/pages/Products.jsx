@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
+import SearchBar from "../components/SearchBar";
+import SortSelect from "../components/SortSelect";
+import CategoryList from "../components/CategoryList";
+import ProductCard from "../components/ProductCard";
+import Pagination from "../components/Pagination";
 
 export default function Products() {
-  const { add } = useCart();
-
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -35,51 +36,21 @@ export default function Products() {
   const paginated = filtered.slice((page - 1) * limit, page * limit);
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h1>Products</h1>
 
-      <input
-        placeholder="Search..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <SearchBar search={search} setSearch={setSearch} />
+      <SortSelect sort={sort} setSort={setSort} />
 
-      <select onChange={(e) => setSort(e.target.value)}>
-        <option value="">Sort</option>
-        <option value="asc">Low → High</option>
-        <option value="desc">High → Low</option>
-      </select>
+      <CategoryList categories={categories} />
 
-      <div>
-        {categories.map((c) => (
-          <Link
-            key={c}
-            to={`/categories/${c}`}
-            style={{ marginRight: "10px" }}
-          >
-            {c}
-          </Link>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+        {paginated.map((p) => (
+          <ProductCard key={p.id} product={p} />
         ))}
       </div>
 
-      {paginated.map((p) => (
-        <div key={p.id} style={{ margin: "20px 0" }}>
-          <h3>{p.title}</h3>
-          <img src={p.image} width="100" />
-          <p>${p.price}</p>
-
-          <Link to={`/product/${p.id}`}>View Details</Link>
-          <button onClick={() => add(p)}>Add to Cart</button>
-        </div>
-      ))}
-
-      <div>
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button onClick={() => setPage(i + 1)} key={i}>
-            {i + 1}
-          </button>
-        ))}
-      </div>
+      <Pagination totalPages={totalPages} page={page} setPage={setPage} />
     </div>
   );
 }
