@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 import { cartReducer } from "../reducers/cartReducer";
 
 const CartContext = createContext();
@@ -9,20 +9,30 @@ export const CartProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : [];
   });
 
+  // Save to LocalStorage
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  const add = (product) => dispatch({ type: "ADD", payload: product });
-  const removeOne = (id) => dispatch({ type: "REMOVE_ONE", payload: id });
-  const deleteItem = (id) => dispatch({ type: "DELETE", payload: id });
+  // Add to cart function
+  const add = (product) => {
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: product,
+    });
+  };
 
-  const totalQty = cart.reduce((a, b) => a + b.qty, 0);
+  const remove = (id) => {
+    dispatch({
+      type: "REMOVE_FROM_CART",
+      payload: id,
+    });
+  };
+
+  const clear = () => dispatch({ type: "CLEAR_CART" });
 
   return (
-    <CartContext.Provider
-      value={{ cart, add, removeOne, deleteItem, totalQty }}
-    >
+    <CartContext.Provider value={{ cart, add, remove, clear }}>
       {children}
     </CartContext.Provider>
   );
