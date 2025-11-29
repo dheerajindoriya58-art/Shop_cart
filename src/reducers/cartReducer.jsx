@@ -13,7 +13,16 @@ export const cartReducer = (state, action) => {
 
       return [...state, { ...action.payload, qty: 1 }];
 
-    case "REMOVE_FROM_CART":
+    case "REMOVE_ONE":
+      return state
+        .map((item) =>
+          item.id === action.payload
+            ? { ...item, qty: item.qty - 1 }
+            : item
+        )
+        .filter((item) => item.qty > 0);
+
+    case "DELETE_ITEM":
       return state.filter((item) => item.id !== action.payload);
 
     case "CLEAR_CART":
