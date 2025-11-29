@@ -1,29 +1,27 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import AppLayout from "./AppLayout";
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
-import Shop from "./pages/Shop";
-import { CartProvider } from "./CartContext";
-import Detail from "./pages/Detail";
+import ProductDetail from "./pages/ProductDetail";
+import CategoryPage from "./pages/CategoryPage";
+import CartPage from "./pages/CartPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout/>,
+    element: <Layout />,
     children: [
-      { path: "/", element: <Home/> },
-      { path: "/products", element: <Products/> },
-      { path: "/products/:id", element: <Detail/> },
-      { path: "/shop", element: <Shop/> },
+      { path: "/", element: <Home /> },
+      { path: "/products", element: <Products /> },
+      { path: "/product/:id", element: <ProductDetail /> },
+      { path: "/categories/:name", element: <CategoryPage /> },
+      { path: "/cart", element: <CartPage /> },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <CartProvider>
-    <RouterProvider router={router} />
-  </CartProvider>
-);
+export default function App() {
+  return <RouterProvider router={router} />;
+}

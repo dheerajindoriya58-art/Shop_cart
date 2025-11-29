@@ -1,24 +1,8 @@
-import React from 'react'
-import Navbar from '../Layout/Navbar'
-import Product from './Products';
-import Services from './Services';
-import Footer from '../Layout/Footer';
-import Contact from './Contact';
-import About from './Hero';
-import Trusted from './Trusted';
-
-function Home() {
+export default function Home() {
   return (
     <div>
-      <Navbar/>
-      <About/>
-      <Product/>
-      <Services/>
-      <Trusted/>
-      <Contact/>
-      <Footer/>
+      <h1>Welcome to FakeStore E-commerce</h1>
+      <p>React + useContext + useReducer + FakeStoreAPI</p>
     </div>
-  )
+  );
 }
-
-export default Home;
