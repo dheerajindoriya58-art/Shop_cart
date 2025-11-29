@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-export default function CategoryList({ categories }) {
+export const CategoryList = ({ categories }) => {
   return (
     <div style={{ margin: "20px 0" }}>
       {categories.map((c) => (

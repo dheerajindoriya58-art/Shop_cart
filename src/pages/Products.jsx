@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import SortSelect from "../components/SortSelect";
-import CategoryList from "../components/CategoryList";
+import {CategoryList} from "../components/CategoryList";
 import ProductCard from "../components/ProductCard";
 import Pagination from "../components/Pagination";
 
@@ -27,7 +27,7 @@ export default function Products() {
 
   let filtered = products.filter((p) =>
     p.title.toLowerCase().includes(search.toLowerCase())
-  );
+);
 
   if (sort === "asc") filtered = filtered.sort((a, b) => a.price - b.price);
   if (sort === "desc") filtered = filtered.sort((a, b) => b.price - a.price);
@@ -44,7 +44,7 @@ export default function Products() {
 
       <CategoryList categories={categories} />
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+      <div>
         {paginated.map((p) => (
           <ProductCard key={p.id} product={p} />
         ))}
