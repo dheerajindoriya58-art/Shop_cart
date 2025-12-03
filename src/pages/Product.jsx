@@ -11,14 +11,15 @@ function Product() {
     }, []);
 
     return (
-        <div className="container ">
+        <div className="container">
 
             {products.map((p) => (
-                <div className="grid grid-four-cols" key={p.id}>
+                <div className="grid grid-four-cols " key={p.id}>
                     <ProductCard product={p} />
                 </div>
             ))}
         </div>
+
     );
 }
 
