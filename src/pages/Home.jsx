@@ -1,10 +1,9 @@
-import Products from "./Products";
+import Product from "./Product";
 
 export default function Home() {
   return (
     <div>
-      <h1>Welcome to FakeStore E-commerce</h1>
-      <Products/>
+      <Product/>
     </div>
   );
 }
