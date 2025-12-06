@@ -12,14 +12,32 @@ import Product from "./pages/Product";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Layout/>,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/products", element: <Products /> },
-      { path: "/product", element: <Product/> },
-      { path: "/product/:id", element: <ProductDetail /> },
-      { path: "/categories/:name", element: <CategoryPage /> },
-      { path: "/cart", element: <CartPage /> },
+      {
+        path: "/",
+        element: <Home/>
+      },
+      {
+        path: "/products",
+        element: <Products/>
+      },
+      {
+        path: "/product",
+        element: <Product/>
+      },
+      {
+        path: "/product/:id",
+        element: <ProductDetail/>
+      },
+      {
+        path: "/categories/:name",
+        element: <CategoryPage/>
+      },
+      {
+        path: "/cart",
+        element: <CartPage/>
+      },
     ],
   },
 ]);

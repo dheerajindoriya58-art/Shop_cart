@@ -19,8 +19,7 @@ export const cartReducer = (state, action) => {
           item.id === action.payload
             ? { ...item, qty: item.qty - 1 }
             : item
-        )
-        .filter((item) => item.qty > 0);
+        ).filter((item) => item.qty > 0);
 
     case "DELETE_ITEM":
       return state.filter((item) => item.id !== action.payload);

@@ -4,133 +4,42 @@
   box-sizing: border-box;
 }
 
-html,
+html{
+  font-size: 62.5%;
+}
+
+li{
+  list-style: none;
+}
 body {
-  width: 100%;
   font-family: Arial, sans-serif;
   overflow-x: hidden;
-  font-size: 62.5%;
   background: #efefef;
   scroll-behavior: smooth;
-  scrollbar-color: rgb(98 84 243);
-  scrollbar-width: thin;
 }
 
-.container h1 {
-  text-align: center;
-  font-size: 30px;
-  margin-top: 20px;
-}
-
-.container {
-  max-width: 107rem;
-  margin: 0 auto;
+.navbar-section{
   height: 10rem;
+  width: 100%;
+  background: #efefef;
 }
 
-p,
-a,
-li,
-button {
-  color: #000000;
-  font-size: 1.7rem;
-  list-style: none;
-  text-decoration: none;
-  line-height: normal;
-  letter-spacing: 1;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  color: #000000;
+.container{
+  height: 10rem;
+  width: 107rem;
+  background: #efefef;
 }
 
 .navbar{
-  height: 10rem;
-}
-.nav-header {
-  height: 10rem;
-  box-shadow: 0px 10px 10px #000;
-}
-
-.flex {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.grid-two-box{
-  grid-template-columns: .5 1fr;
-}
-
-.grid {
   display: grid;
-}
-
-.grid-two-cols {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.grid-three-cols {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.grid-four-cols {
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-
-.grid-five-cols {
-  grid-template-columns: repeat(5, 1fr);
-}
-
-.Btn {
-  padding: .8rem 2.4rem;
-  border-radius: 20px;
-  background-color: #4F46E5;
-  color: #ffffff;
-  display: inline-block;
-  text-align: center;
-  font-size: 14px;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
-  transition: all .2s ease;
-}
-
-.Btn:hover {
-  background-color: #111827;
-}
-
-.navbar {
   grid-template-columns: .5fr 1fr;
-  align-items: center;
   height: 10rem;
-  padding: 0 3.2rem;
-}
-
-nav ul {
-  display: flex;
   align-items: center;
-  justify-content: space-around;
 }
 
-nav ul li {
-  flex-direction: end;
-}
-
-.card{
-  width: 280px;
-  height: 300px;
-  background-color: #efefef;
-  color: #000;
-}
-
-.card img{
-  width: 100%;
-  object-fit: cover;
-  object-position: center;
+nav ul{
+  display: flex;
+  flex-direction: flex-end;
+  align-items: center;
+  gap: 3.2rem;
 }

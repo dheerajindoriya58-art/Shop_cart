@@ -5,31 +5,33 @@ export default function Navbar() {
   const { cart } = useCart();
 
   return (
-    <header className="nav-header">
-      <div className="navbar container grid grid-two-box">
+    <div className="navbar-section">
+      <div className="container">
+        <div className="navbar grid grid-two-box">
 
-        <div className="logo">
-          <h1>Shop</h1>
+          <div className="logo">
+            <h1>Shop</h1>
+          </div>
+
+          <nav>
+            <ul>
+              <li> <NavLink to="/">Home</NavLink> </li>
+              <li>
+                <NavLink to="/products">Products</NavLink></li>
+              <li>
+                <NavLink to="/cart">
+                  🛒 Cart ({cart.length})
+                </NavLink>
+              </li>
+            </ul>
+
+          </nav>
         </div>
-
-        <nav className="nav-link">
-
-          <ul className="flex-end">
-            <li> <NavLink to="/">Home</NavLink> </li>
-            <li>
-              <NavLink to="/products">Products</NavLink></li>
-            <li>
-              <NavLink to="/cart">
-                🛒 Cart ({cart.length})
-              </NavLink>
-            </li>
-          </ul>
-
-        </nav>
       </div>
 
 
-    </header>
+
+    </div>
 
   );
 }
