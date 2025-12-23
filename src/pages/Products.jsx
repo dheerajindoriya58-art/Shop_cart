@@ -21,29 +21,41 @@ export default function Products() {
       .then(setCategories);
   }, []);
 
+  // ✅ Search
   let filtered = products.filter((p) =>
     p.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  if (sort === "asc")
-    filtered.sort((a, b) => a.price - b.price);
+  // ✅ Sort
+  if (sort === "asc") filtered.sort((a, b) => a.price - b.price);
   if (sort === "desc") filtered.sort((a, b) => b.price - a.price);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Products</h1>
+    <div className="max-w-7xl mx-auto px-4 py-6">
+      <h1 className="text-2xl font-bold mb-6">Products</h1>
 
-      <SearchBar search={search} setSearch={setSearch} />
-      <SortSelect sort={sort} setSort={setSort} />
+      {/* Filters */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        <SearchBar search={search} setSearch={setSearch} />
+        <SortSelect sort={sort} setSort={setSort} />
+      </div>
 
+      {/* Categories */}
       <CategoryList categories={categories} />
 
-      <div>
-        {products.map((p) => (
+      {/* Products Grid */}
+      <div
+        className="grid gap-6 
+        grid-cols-1 
+        sm:grid-cols-2 
+        md:grid-cols-3 
+        lg:grid-cols-4 
+        mt-6"
+      >
+        {filtered.map((p) => (
           <ProductCard key={p.id} product={p} />
         ))}
       </div>
-
     </div>
   );
 }

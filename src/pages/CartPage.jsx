@@ -52,7 +52,7 @@ export default function CartPage() {
             {/* Delete Button */}
             <button
               onClick={() => deleteItem(item.id)}
-              className="text-red-500 hover:text-red-700 mt-2 md:mt-0"
+              className="bg-[#d41919] hover:bg-[#eb3434] text-white mt-2 p-[8px_24px] rounded md:mt-0"
             >
               Delete
             </button>

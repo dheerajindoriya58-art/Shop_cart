@@ -4,19 +4,19 @@ export default function ProductCard({ product }) {
   const { add } = useCart();
 
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-[20px]">
-
-    <div className="border rounded shadow-md p-4 m-4  hover:shadow-xl transition w-[270px] h-[380px]">
-
+    <div className="border rounded-lg shadow-md p-4 
+      hover:shadow-xl transition 
+      flex flex-col"
+    >
       {/* Image */}
       <img
         src={product.image}
         alt={product.title}
-        className="w-[220px] h-[auto] sm:h-48 object-contain mb-4"
+        className="h-48 w-full object-contain mb-4"
       />
 
       {/* Title */}
-      <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-2 line-clamp-2">
+      <h3 className="text-sm md:text-base font-semibold mb-2 line-clamp-2">
         {product.title}
       </h3>
 
@@ -26,11 +26,11 @@ export default function ProductCard({ product }) {
       {/* Button */}
       <button
         onClick={() => add(product)}
-        className="mt-auto bg-black text-white p-[8px_24px] rounded hover:bg-gray-800 transition"
+        className="mt-auto bg-black text-white px-6 py-2 rounded 
+        hover:bg-gray-800 transition"
       >
         Add to Cart
       </button>
-    </div>
     </div>
   );
 }
