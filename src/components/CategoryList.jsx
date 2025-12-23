@@ -2,16 +2,23 @@ import { NavLink } from "react-router-dom";
 
 export const CategoryList = ({ categories }) => {
   return (
-    <div style={{ margin: "20px 0" }}>
+    <div className="flex flex-wrap gap-3 my-6">
       {categories.map((c) => (
         <NavLink
           key={c}
           to={`/categories/${c}`}
-          style={{ marginRight: "20px", textTransform: "capitalize" }}
+          className={({ isActive }) =>
+            `px-4 py-2 rounded border text-sm capitalize transition
+             ${
+               isActive
+                 ? "bg-black text-white"
+                 : "bg-gray-100 hover:bg-gray-200"
+             }`
+          }
         >
           {c}
         </NavLink>
       ))}
     </div>
   );
-}
+};

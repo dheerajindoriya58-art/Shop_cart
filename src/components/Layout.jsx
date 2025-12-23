@@ -5,7 +5,7 @@ export default function Layout() {
   return (
     <>
       <Navbar />
-      <div style={{ padding: "20px" }}>
+      <div className="py-[20px]">
         <Outlet />
       </div>
     </>
