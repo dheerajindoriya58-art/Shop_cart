@@ -20,7 +20,7 @@ export default function CategoryPage() {
 
   return (
     <div className="max-w-[1070px] mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6 capitalize">
+      <h1 className="text-2xl font-bold mb-6 capitalize bg-">
         Category: {name}
       </h1>
 
